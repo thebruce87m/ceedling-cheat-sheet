@@ -37,3 +37,18 @@ We may not have access to the __timer__ pointer to check it, so ignore it:
 time_remaining_ExpectAndReturn(NULL, 10); //function returns 10
 time_remaining_IgnoreArg_timer();
 ```
+
+## Check Memory
+
+Add the following to the bottom of __project.yml__
+
+```
+:flags:
+  :test:
+    :compile:
+      :*:
+        - -fsanitize=address
+    :link:
+      :*:
+        - -fsanitize=address
+```
